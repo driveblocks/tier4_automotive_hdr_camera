@@ -7,7 +7,7 @@ _BUILD_DIR      ?= $(shell readlink -f $(BUILD_DIR))
 Xavier_word           := Xavier
 Xavier_other_word_1   := Jetson-AGX
 Orin_word             := Orin
-Orin_Compatible_word  := p3737-0000+p3701-0000nvidia
+Orin_Compatible_word  := p3701-0000nvidia
 ROScube_word          := ROScube-X
 ROScube_Orin_word     := 590
 ROScube_Orin_Model_word  := ROScube-Orin
@@ -244,6 +244,8 @@ ifeq ($(ARCH), arm64)
 endif
 
 ccflags-y += -DBUILD_STAMP="\"`date +'%Y-%m-%d %H:%M:%S'`\""
+
+CFLAGS += -I/usr/src/nvidia/nvidia-oot/include
 
 obj-m := tier4-max9295.o tier4-max9296.o tier4-isx021.o tier4-imx490.o tier4-gw5300.o tier4-fpga.o
 
