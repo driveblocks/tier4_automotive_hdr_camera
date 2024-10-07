@@ -331,9 +331,10 @@ int tier4_max9296_power_on(struct device *dev)
         break;
       }
     }
-    if (priv->reset_gpio)
-      //            gpio_set_value(priv->reset_gpio, 0);
-      gpio_direction_output(priv->reset_gpio, 0);
+    if (priv->reset_gpio) {
+      gpio_set_value(priv->reset_gpio, 1);
+      //gpio_direction_output(priv->reset_gpio, 0);
+    }
 
     usleep_range(50, 80);
 
@@ -349,14 +350,14 @@ int tier4_max9296_power_on(struct device *dev)
     if (priv->reset_gpio)
     {
 
-      //            gpio_set_value(priv->reset_gpio, 0);
-      gpio_direction_output(priv->reset_gpio, 0);
+      gpio_set_value(priv->reset_gpio, 1);
+      //gpio_direction_output(priv->reset_gpio, 0);
 
       usleep_range(50, 80);
       usleep_range(1000000,1100000);
-      //            gpio_set_value(priv->reset_gpio, 1);
+      gpio_set_value(priv->reset_gpio, 0);
 
-      gpio_direction_output(priv->reset_gpio, 1);
+      //gpio_direction_output(priv->reset_gpio, 1);
 
       usleep_range(50, 80);
     }
@@ -386,9 +387,10 @@ void tier4_max9296_power_off(struct device *dev)
   {
     /* enter reset mode: XCLR */
     usleep_range(1, 2);
-    if (priv->reset_gpio)
-      //            gpio_set_value(priv->reset_gpio, 0);
-      gpio_direction_output(priv->reset_gpio, 0);
+    if (priv->reset_gpio) {
+      gpio_set_value(priv->reset_gpio, 1);
+      //gpio_direction_output(priv->reset_gpio, 0);
+    }
 
     if (priv->vdd_cam_1v2)
       regulator_disable(priv->vdd_cam_1v2);
