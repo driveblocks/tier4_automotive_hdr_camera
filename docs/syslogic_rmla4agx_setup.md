@@ -9,9 +9,6 @@ camera functionality.
 The original camera driver is hosted here:
 <https://github.com/tier4/tier4_automotive_hdr_camera>
 
-A driveblocks fork is hosted here:
-<https://github.com/driveblocks/tier4_automotive_hdr_camera/tree/driveblocks_rml4agx-jp6>
-
 ## Overview
 This guide covers:
 - building and installing the TIER IV camera driver
